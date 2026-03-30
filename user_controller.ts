@@ -7,7 +7,8 @@ class UserController {
         try {
   
             const user = await userService.register(req.body);
-            res.status(200).json(user);
+            const user_token = {userid: user.id}
+            res.status(200).json(user_token);
         } catch (e: any) {
             res.status(500).json(e.message);
         }
@@ -18,7 +19,8 @@ class UserController {
             const { email, password } = req.body;
 
             const user = await userService.login(email as string, password);
-            res.status(200).json(user);
+            const user_token = {userid: user.id}
+            res.status(200).json(user_token);
         } catch (e: any) {
             res.status(500).json(e.message);
         }
