@@ -20,11 +20,12 @@ class UserController {
         try{
             const{email,password} = req.body
             const user = await User.findOne({ email });
+
             if (!user){
                 return res.status(404).json("Email doesn't exist")
 
             }
-            if (user.password!== password){
+            if (String(user.password) !== String(password)){
                 return res.status(401).json("Wrong Passwrod")
             }
            const user_token = {userid: user.id}

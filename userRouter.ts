@@ -4,10 +4,9 @@ import UserController from "./user_controller"
 const user_router =  Router()
 
 
-user_router.post("/register" ,UserController.register);
-user_router.post("/login" ,UserController.login);
+user_router.post("/register", (req, res) => UserController.register(req, res));
+user_router.post("/login", (req, res) => UserController.login(req, res));
 user_router.get("/user/:id", (req, res) => UserController.getuser_data(req, res));
-
 
 
 export default user_router;
