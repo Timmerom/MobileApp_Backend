@@ -4,8 +4,8 @@ import User from "./users";
 class UserController {
     async register(req: express.Request, res: express.Response) { 
         try {
-            const { email, password, telephone } = req.body;
-            const user = await User.create({ email, password, telephone });
+            const { email, password } = req.body;
+            const user = await User.create({ email, password });
             const user_token = {userid: user.id}
             res.status(200).json(user_token);
         } catch (e) {
