@@ -1,5 +1,5 @@
 
-import User from "./users";
+import User from "../models/users";
 
 class UserService {
     async register(user: any) {
@@ -20,6 +20,20 @@ class UserService {
         if (!user) throw new Error("User was not found in DB");
         return user;
     }
+
+
+    async updateAvatar(id: string, imageUrl: string) {
+    const user = await User.findByIdAndUpdate(
+        id, 
+        { avatar: imageUrl }, 
+        { new: true } 
+    );
+    if (!user) throw new Error("User was not found");
+    return user;
+}
+
+
+
 }
 
 export default new UserService();

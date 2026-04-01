@@ -1,8 +1,8 @@
 import express from 'express';
 import mongoose from "mongoose"
-import user_router from "./userRouter"
+import user_router from "./routers/userRouter"
 import cors from 'cors';
-import * as dotenv from 'dotenv'; // 1. Импорт
+import * as dotenv from 'dotenv';
 
 dotenv.config();
 
